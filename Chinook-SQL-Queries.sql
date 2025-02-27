@@ -1,4 +1,4 @@
-/* Question 1: Who is the top customer? */
+/* Question 1: Who are the top customers? */
 SELECT (Customer.FirstName || " " || Customer.LastName) AS customer_name,
        ROUND(SUM(Invoice.Total), 2) AS total_spending
 FROM Customer
@@ -8,7 +8,7 @@ GROUP BY customer_name
 ORDER BY total_spending DESC
 LIMIT 5;
 
-/* Question 2: Who is the best-selling artist? */
+/* Question 2: Who is the best-selling top 5artist? */
 SELECT Artist.ArtistId, Artist.Name AS artist_name, 
        ROUND(SUM(InvoiceLine.UnitPrice * InvoiceLine.Quantity), 2) AS total_sales
 FROM InvoiceLine
@@ -22,7 +22,7 @@ GROUP BY Artist.ArtistId
 ORDER BY total_sales DESC
 LIMIT 5;
 
-/* Question 3: What is the most frequent genre? */
+/* Question 3: What are the most frequent genres? */
 SELECT Genre.Name AS genre_name, 
        COUNT(Track.GenreId) AS total_count
 FROM Genre
@@ -32,7 +32,7 @@ GROUP BY Genre.Name
 ORDER BY total_count DESC
 LIMIT 5;
 
-/* Question 4: Who is the top rock artist? */
+/* Question 4: Who is the top 10 rock artist? */
 SELECT Artist.ArtistId, Artist.Name AS artist_name, 
        COUNT(Track.TrackId) AS rock_song_count
 FROM Artist
@@ -47,7 +47,7 @@ GROUP BY Artist.ArtistId
 ORDER BY rock_song_count DESC
 LIMIT 10;
 
-/* Question 5: Which country has the most customers? */
+/* Question 5: Which countries has the most customers? */
 SELECT Customer.Country, 
        COUNT(Customer.CustomerId) AS customer_count
 FROM Customer
